@@ -145,6 +145,13 @@
       "description": "<div>公主踢騎士</div>",
       "packageName": "jp.gungho.kerihimequest",
       "downloadURL": "https://github.com/r2-studio/robotmon-scripts/raw/master/scripts/com.steven.princesspunt/index.zip"
+    },
+    "com.r2studio.ROHelper": {
+      "title": "RO 新世代的誕生",
+      "versionCode": 1,
+      "description": "<div>讓你成為時間管理大師👻</div>",
+      "packageName": "com.play.rogt",
+      "downloadURL": "https://github.com/jnshao/robotmon-scripts/raw/master/scripts/com.r2studio.ROHelper/index.zip"
     }
   },
   "libs": {
