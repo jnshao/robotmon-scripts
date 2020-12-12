@@ -17,6 +17,13 @@ function FishingTask(config) {
 	};
 
 	this.stopWhenNormalBait = config.stopWhenNormalBait || false;
+
+	// use -1 to represent infinite
+	if (typeof config.fishingTimes === 'number') {
+		this.fishingTimes = (config.fishingTimes <= 0) ? -1 : config.fishingTimes;
+	} else {
+		this.fishingTimes = -1;
+	}
 }
 
 FishingTask.prototype._getFlyFishingImg = function() {
@@ -112,6 +119,7 @@ FishingTask.prototype.startTask = function() {
 			timeout = 0;
 		} else if (isWaitFish === true && this.canReelFishing()) {
 			this.flyRealFishing();
+			this.fishingTimes--;
 			isWaitFish = false;
 			timeout = 0;
 			sleep(4000); // wait for fly fishing button show up
@@ -124,6 +132,9 @@ FishingTask.prototype.startTask = function() {
 
 			timeout++;
 			sleep(100);
+		}
+		if (this.fishingTimes === 0) {
+			this.isStopFishing = true;
 		}
 	}
 }

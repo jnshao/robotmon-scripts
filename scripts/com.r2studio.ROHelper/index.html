@@ -7,9 +7,18 @@
 	<script src="lib/js/bootstrap.bundle.min.js"></script>
 	<script>
 		$(document).ready(function() {
+			// 
 			$("input[name='task']").change(function() {
 				var a = $(this).closest('div.form-group').find(':input');
 				console.log(a);
+			});
+			$("input[name='fishingTimes']").change(function() {
+				var value = $(this).val();
+				if (value > 999) {
+					$(this).val(999);
+				} else if (value < 0) {
+					$(this).val(0);
+				}
 			});
 		});
 
@@ -18,6 +27,7 @@
 			var inputs = $('.form-group input').serializeArray();
 			var settings = {};
 
+			console.log(inputs);
 			inputs.forEach(function(input) {
 				settings[input.name] = input.value;
 			});
@@ -41,7 +51,7 @@
 <body>
 	<nav class="navbar navbar-custom" role="navigation">
 		<a id="version" class="navbar-brand">輔助</a>
-		<!--button onclick="onLog(getSettings())">Debug</button-->
+		<button onclick="onLog(getSettings())">Debug</button>
 	</nav>
 	<ul class="nav nav-tabs" id="navbar" role="tablist" style="margin-top: 10px;">
 		<li class="nav-item" style="padding-left: 10px;">
@@ -51,7 +61,7 @@
 			<a class="nav-link" data-toggle="tab" href="#other-option-tab" role="tab" aria-controls="profile" aria-selected="false">其他功能</a>
 		</li>
 	</ul>
-	<div class="tab-content" id="myTabContent">
+	<div class="tab-content">
 		<div class="tab-pane fade show active" id="core-task-tab" role="tabpanel" aria-labelledby="core-task-tab">
 			<fieldset class="form-group">
 				<div class="row justify-content-center">
@@ -62,10 +72,10 @@
 								<label class="form-check-label" for="fishing-task">
 									自動釣魚
 								</label>
-								<div>
-									<label class="form-check-label" for="fishing-times">釣魚次數</label>
-									<input class="form-control col-sm-6" type="number" value="42" min=0 id="fishing-times">
-								</div>
+								<li>
+									<label class="form-check-label" for="fishing-times">指定釣魚次數 <span style="color: red; font-weight: bold;">( 0 代表沒限制)</span></label>
+									<input class="form-control col-sm-4" type="number" name="fishingTimes" id="fishing-times">
+								</li>
 							</div>
 						</div>
 						<div class="task-border">
