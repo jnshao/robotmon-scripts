@@ -19,8 +19,8 @@ function FishingTask(config) {
 	this.stopWhenNormalBait = config.stopWhenNormalBait || false;
 
 	// use -1 to represent infinite
-	if (typeof config.fishingTimes === 'number') {
-		this.fishingTimes = (config.fishingTimes <= 0) ? -1 : config.fishingTimes;
+	if (Number(config.fishingTimes) === Number(config.fishingTimes)) {
+		this.fishingTimes = (Number(config.fishingTimes) <= 0) ? -1 : Number(config.fishingTimes);
 	} else {
 		this.fishingTimes = -1;
 	}
@@ -109,6 +109,7 @@ FishingTask.prototype.startTask = function() {
 	this.initFishingTask();
 	
 	while (!this.isStopFishing) {
+		DEBUG(1, 'Fishing times: ', this.fishingTimes);
 		if (isWaitFish === false && this.canFlyFishing()) {
 			if (this.stopWhenNormalBait && this.isNormalBait()) {
 				DEBUG(0, 'Stop fishing due to normal bait');
