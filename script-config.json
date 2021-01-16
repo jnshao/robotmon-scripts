@@ -148,7 +148,7 @@
     },
     "com.r2studio.ROHelper": {
       "title": "RO 新世代的誕生",
-      "versionCode": 2,
+      "versionCode": 3,
       "description": "<div>讓你成為時間管理大師👻</div>",
       "packageName": "com.play.rogt",
       "downloadURL": "https://github.com/jnshao/robotmon-scripts/raw/master/scripts/com.r2studio.ROHelper/index.zip"
